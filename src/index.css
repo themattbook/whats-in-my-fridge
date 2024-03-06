@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
+:root {
+	font-family: "Outfit", sans-serif;
+	font-optical-sizing: auto;
+	font-style: normal;
+	line-height: 1.5;
+	font-weight: 400;
+
+	color-scheme: light dark;
+	color: rgba(255, 255, 255, 0.87);
+	background-color: #242424;
+
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+	display: grid;
+	grid-template-columns: 1fr [ingredient-area-start] 1fr [ingredient-area-end] 1fr [recipes-area-start] 2fr [recipes-area-end] 1fr;
+	justify-content: center;
+	padding: 1rem;
+}
+
+.todo-list {
+	display: grid;
+	grid-area: ingredient-area;
+	width: 100%;
+}
+
+.recipe-list {
+	display: grid;
+	grid-area: recipes-area;
+	width: 100%;
+}
+
+.todo-items {
+	padding-top: 1rem;
+}
+
+.todo-items li {
+	border: 1px solid #ffffff;
+	box-sizing: border-box;
+	padding: 1rem;
+	margin-block: 1rem;
+	width: 100%;
+}
+
+.todo-input {
+	display: grid;
+	align-items: center;
+}
+
+.todo-input,
+.todo-items {
+	width: 100%;
+}
+
+.recipe-card {
+	padding: 6px;
+	margin-top: 1rem;
+	border: 1px solid #242424;
+	color: rgb(30, 30, 30);
+}
+
+.recipe-info {
+	padding: 4px;
+	background-color: #ffffffa7;
+}
+
+ul {
+	list-style: none;
+	padding: 0;
+}
+
+input {
+	border: 1px solid #242424;
+	border-radius: 9999px;
+	padding: 10px;
+	margin-top: 1rem;
+}
+
+button {
+	color: white;
+}
+
+.btn-success {
+	background-color: #369f36;
+	border: none;
+	border-radius: 9999px;
+	font-weight: bold;
+	padding: 10px;
+	margin: 0.5em;
+}
+
+.btn-default {
+	background-color: #b9b9b9;
+	border: none;
+	border-radius: 9999px;
+	font-weight: bold;
+	padding: 10px;
+	margin: 0.5em;
+}
+
+@media (prefers-color-scheme: light) {
+	:root {
+		color: #213547;
+		background-color: #ffffff;
+	}
+	.todo-items li {
+		border: 1px solid #213547;
+	}
+}
