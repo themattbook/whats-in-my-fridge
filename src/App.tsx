@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Recipes, RecipeArray } from "./models/RecipeModel";
+import { IoCloseCircle } from "react-icons/io5";
 
 function App() {
 	const [ingredient, setIngredient] = useState<Array<string>>([]);
@@ -25,6 +26,14 @@ function App() {
 			.then((data) => setRecipes(data))
 			.catch((error) => console.error(error));
 	}
+
+	function removeIngredient(ingredientToRemove: string) {
+		const newIngredients = ingredient.filter(
+			(item) => item !== ingredientToRemove
+		);
+		setIngredient(newIngredients);
+	}
+
 	return (
 		<div className="container">
 			<div className="todo-list">
@@ -32,7 +41,7 @@ function App() {
 					<h3>Recipe Finder</h3>
 					<input
 						type="text"
-						placeholder="Enter ingredients"
+						placeholder="Enter ingredient to add"
 						value={newIngredient}
 						onChange={(e) => setNewIngredient(e.target.value)}
 					/>
@@ -48,8 +57,18 @@ function App() {
 				</div>
 				<div className="todo-items">
 					<ul>
-						{ingredient.map((item: string) => {
-							return <li key={item}>{item}</li>;
+						{ingredient.map((item: string, index: number) => {
+							return (
+								<li key={item + index}>
+									<button
+										onClick={() => removeIngredient(item)}
+										className="btn-close"
+									>
+										<IoCloseCircle size={"1.5em"} />
+									</button>
+									{item}
+								</li>
+							);
 						})}
 					</ul>
 				</div>

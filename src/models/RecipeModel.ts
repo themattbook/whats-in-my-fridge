@@ -22,7 +22,7 @@ interface IngredientDetail {
 	original: string;
 	originalName: string;
 	image: string;
-	meta?: string[]; // Assuming meta is an array of strings
+	meta?: string[];
 }
 
 export interface RecipeArray extends Array<Recipes> {}

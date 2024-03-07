@@ -46,17 +46,15 @@
 }
 
 .todo-items li {
-	border: 1px solid #ffffff;
-	box-sizing: border-box;
-	padding: 1rem;
-	margin-block: 1rem;
-	text-align: center;
-	width: 100%;
+	margin-block: 0.2rem;
+	display: flex;
+	align-items: center;
 }
 
 .todo-input {
 	display: grid;
 	align-items: center;
+	max-height: 500px;
 }
 
 .todo-input,
@@ -96,18 +94,19 @@ ul {
 
 input {
 	border: 1px solid #ffffff;
-	border-radius: 9999px;
 	padding: 10px;
 	margin-block: 1rem;
 }
 
 button {
 	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	padding: 10px;
-	margin-block: 0.5em;
 	border: none;
-	border-radius: 9999px;
 	font-weight: bold;
+	cursor: pointer;
 }
 
 .btn-success {
@@ -115,16 +114,18 @@ button {
 }
 
 .btn-default {
-	background-color: #b9b9b9;
+	background-color: #949494;
+}
+
+.btn-close {
+	background-color: transparent;
+	color: #242424;
 }
 
 @media (prefers-color-scheme: light) {
 	:root {
 		color: #213547;
 		background-color: #ffffff;
-	}
-	.todo-items li {
-		border: 1px solid #242424;
 	}
 	.recipe-card {
 		border: 1px solid #242424;
