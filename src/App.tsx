@@ -1,19 +1,5 @@
 import { useState } from "react";
-
-interface Recipes {
-	id: number;
-	image: string;
-	imageType: string;
-	likes: number;
-	missedIngredientCount: number;
-	missedIngredients: [];
-	title: string;
-	unusedIngredients: [];
-	usedIngredientCount: number;
-	usedIngredients: [];
-}
-
-interface RecipeArray extends Array<Recipes> {}
+import { Recipes, RecipeArray } from "./models/RecipeModel";
 
 function App() {
 	const [ingredient, setIngredient] = useState<Array<string>>([]);
@@ -31,7 +17,7 @@ function App() {
 	}
 
 	function fetchRecipes() {
-		fetch(`https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredient}&number=5&apiKey=${
+		fetch(`https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredient}&apiKey=${
 			import.meta.env.VITE_RECIPE_API_KEY
 		}
     `)
@@ -43,7 +29,7 @@ function App() {
 		<div className="container">
 			<div className="todo-list">
 				<div className="todo-input">
-					<h1>Recipe Finder</h1>
+					<h3>Recipe Finder</h3>
 					<input
 						type="text"
 						placeholder="Enter ingredients"
@@ -69,28 +55,29 @@ function App() {
 				</div>
 			</div>
 			<div className="recipe-list">
-				{recipes.map((item: Recipes) => {
-					return (
-						<div
-							className="recipe-card"
-							key={item.id}
-							style={{
-								backgroundImage: `url(${item.image})`,
-								backgroundSize: "cover",
-								backgroundPosition: "center center",
-							}}
-						>
-							<div className="recipe-info">
-								<h2>{item.title}</h2>
-								<p>You have {item.usedIngredientCount} ingredients on hand.</p>
-								<p>
-									You need {item.missedIngredientCount} ingredients to make
-									this.
-								</p>
+				<div className="flex-items">
+					{recipes.map((item: Recipes) => {
+						return (
+							<div
+								className="recipe-card"
+								key={item.id}
+								style={{
+									backgroundImage: `url(${item.image})`,
+									backgroundSize: "cover",
+									backgroundPosition: "center center",
+								}}
+							>
+								<div className="recipe-info">
+									<h3>{item.title}</h3>
+									<p>
+										You have {item.usedIngredientCount} ingredients on hand.
+									</p>
+									<p>You need {item.missedIngredientCount} more.</p>
+								</div>
 							</div>
-						</div>
-					);
-				})}
+						);
+					})}
+				</div>
 			</div>
 		</div>
 	);
